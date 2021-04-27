@@ -2,6 +2,13 @@
 
 ## [2021-04-27]
 
+### Added 
+
+- Coffee, headphones, raven object detection project
+
+
+## [2021-04-27]
+
 ### Removed 
 
 - Previous projects
