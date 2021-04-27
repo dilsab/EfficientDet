@@ -2,6 +2,14 @@
 
 ## [2021-04-27]
 
+### Removed 
+
+- Previous projects
+- Notebooks
+
+
+## [2021-04-27]
+
 ### Changed 
 
 - .gitignore
