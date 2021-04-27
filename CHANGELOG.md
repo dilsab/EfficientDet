@@ -2,6 +2,13 @@
 
 ## [2021-04-27]
 
+### Changed
+
+- Model test to work with CUDA.
+
+
+## [2021-04-27]
+
 ### Added
 
 - Model test (CPU). Coffee, headphones, raven.

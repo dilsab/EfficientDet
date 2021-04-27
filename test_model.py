@@ -23,6 +23,7 @@ def visualize():
     img_path = 'datasets/coffee_headphones_raven/difficult_examples/0.jpg'
     compound_coef = 0
 
+    use_gpu = False
     threshold = 0.2
     iou_threshold = 0.2
 
@@ -30,7 +31,11 @@ def visualize():
 
     ori_imgs, framed_imgs, framed_metas = preprocess(img_path, max_size=input_size)
 
-    x = torch.stack([torch.from_numpy(fi) for fi in framed_imgs], 0)
+    if use_gpu:
+        x = torch.stack([torch.from_numpy(fi).cuda() for fi in framed_imgs], 0)
+    else:
+        x = torch.stack([torch.from_numpy(fi) for fi in framed_imgs], 0)
+
     x = x.to(torch.float32).permute(0, 3, 1, 2)
 
     model = EfficientDetBackbone(compound_coef=compound_coef, num_classes=len(obj_list),
@@ -38,9 +43,16 @@ def visualize():
                                  scales=[2 ** 0, 2 ** (1.0 / 3.0), 2 ** (2.0 / 3.0)]
                                  )
 
-    model.load_state_dict(torch.load(weight_file, map_location=torch.device('cpu')))
+    if use_gpu:
+        model.load_state_dict(torch.load(weight_file))
+    else:
+        model.load_state_dict(torch.load(weight_file, map_location=torch.device('cpu')))
+
     model.requires_grad_(False)
     model.eval()
+
+    if use_gpu:
+        model = model.cuda()
 
     with torch.no_grad():
         features, regression, classification, anchors = model(x)
