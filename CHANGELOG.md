@@ -2,6 +2,17 @@
 
 ## [2021-04-27]
 
+### Added
+
+- Flask and simple UI for coffee, headphones, raven detection.
+
+### Changed
+
+- Improved score label visibility
+
+
+## [2021-04-27]
+
 ### Changed
 
 - Model test to work with CUDA.

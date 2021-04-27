@@ -13,6 +13,7 @@ tensorboardx = "*"
 pyyaml = "*"
 webcolors = "*"
 matplotlib = "*"
+flask = "*"
 
 [dev-packages]
 

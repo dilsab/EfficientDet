@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.use('Agg')
+
 import torch
 
 from backbone import EfficientDetBackbone
@@ -17,10 +20,9 @@ def get_input_size(compound_coef):
     return input_sizes[compound_coef]
 
 
-def visualize():
+def detect_objects(img_path):
     weight_file =  os.path.join('logs', 'coffee_headphones_raven_imbalanced', 'efficientdet-d0_21_4500.pth')
     obj_list = ['coffee', 'headphones', 'raven']
-    img_path = 'datasets/coffee_headphones_raven/difficult_examples/0.jpg'
     compound_coef = 0
 
     use_gpu = False
@@ -66,6 +68,8 @@ def visualize():
 
     out = invert_affine(framed_metas, out)
 
+    detection_result = { 'classes': {}, 'detected_total': 0 }
+
     for i in range(len(ori_imgs)):
         if len(out[i]['rois']) == 0:
             continue
@@ -74,6 +78,11 @@ def visualize():
             (x1, y1, x2, y2) = out[i]['rois'][j].astype(np.int)
             cv2.rectangle(ori_imgs[i], (x1, y1), (x2, y2), (255, 255, 0), 2)
             obj = obj_list[out[i]['class_ids'][j]]
+
+            if obj not in detection_result['classes']:
+                detection_result['classes'][obj] = 0
+            detection_result['classes'][obj] += 1
+            detection_result['detected_total'] += 1
             score = float(out[i]['scores'][j])
 
             cv2.rectangle(ori_imgs[i], (x1, y2 - 50), (x1 + 120 + len(obj) * 22, y2), (0, 0, 0), cv2.FILLED)
@@ -82,8 +91,7 @@ def visualize():
                         (255, 255, 255), 2)
 
             plt.imshow(ori_imgs[i])
-    plt.show()
+    plt.axis('off')
+    detection_result['image'] = plt
 
-
-if __name__ == '__main__':
-    visualize()
+    return detection_result

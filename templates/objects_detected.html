@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Objects detected</title>
+</head>
+<body>
+    {% if detection_result.detected_total > 0 %}
+        <h1>Detected {{ detection_result.detected_total }} object(s)</h1>
+        <ul>
+            {% for obj_name, amount in detection_result.classes.items() %}
+                <li>{{ obj_name|upper }}: {{ amount }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>Did not detect any objects</h1>
+    {% endif %}
+    <img src="data:image/jpg;base64,{{ img }}">
+    <br><a href="/">Try again</a>
+</body>
+</html>
