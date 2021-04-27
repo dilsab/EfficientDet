@@ -2,6 +2,13 @@
 
 ## [2021-04-27]
 
+### Changed 
+
+- .gitignore
+
+
+## [2021-04-27]
+
 ### Added 
 
 - CHANGELOG.md

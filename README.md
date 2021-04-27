@@ -16,7 +16,7 @@ CPU
 ```shell
 pip install torch==1.8.1+cpu torchvision==0.9.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CUDA
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CUDA
 ```shell
 pip install torch==1.8.1+cu102 torchvision==0.9.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html
 ```
