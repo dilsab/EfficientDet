@@ -21,7 +21,7 @@ def get_input_size(compound_coef):
 
 
 def detect_objects(img_path):
-    weight_file =  os.path.join('logs', 'coffee_headphones_raven_imbalanced', 'efficientdet-d0_21_4500.pth')
+    weight_file =  os.path.join('logs', 'coffee_headphones_raven_imbalanced', 'efficientdet-d0_29_6270.pth')
     obj_list = ['coffee', 'headphones', 'raven']
     compound_coef = 0
 
@@ -31,7 +31,7 @@ def detect_objects(img_path):
 
     input_size = get_input_size(compound_coef)
 
-    ori_imgs, framed_imgs, framed_metas = preprocess(img_path, max_size=input_size)
+    ori_imgs, framed_imgs, framed_metas = preprocess(img_path, max_size=input_size, rgb=True)
 
     if use_gpu:
         x = torch.stack([torch.from_numpy(fi).cuda() for fi in framed_imgs], 0)

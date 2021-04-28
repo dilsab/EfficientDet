@@ -2,6 +2,17 @@
 
 ## [2021-04-28]
 
+### Fixed
+
+- OpenCV matplotlib color order mismatch issue.
+
+### Changed
+
+- Default weights used for object detection.
+
+
+## [2021-04-28]
+
 ### Removed
 
 - Previous test examples.
