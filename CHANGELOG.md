@@ -2,6 +2,13 @@
 
 ## [2021-04-28]
 
+### Changed
+
+- Threshold used for object detection (detect, test_model).
+
+
+## [2021-04-28]
+
 ### Fixed
 
 - OpenCV matplotlib color order mismatch issue.

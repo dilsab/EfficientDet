@@ -26,7 +26,7 @@ def detect_objects(img_path):
     compound_coef = 0
 
     use_gpu = False
-    threshold = 0.2
+    threshold = 0.4
     iou_threshold = 0.2
 
     input_size = get_input_size(compound_coef)
