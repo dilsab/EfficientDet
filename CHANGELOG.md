@@ -1,5 +1,12 @@
 # Changelog
 
+## [2021-04-28]
+
+### Removed
+
+- Previous test examples.
+
+
 ## [2021-04-27]
 
 ### Added
