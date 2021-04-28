@@ -2,6 +2,13 @@
 
 ## [2021-04-28]
 
+### Removed
+
+- res folder.
+
+
+## [2021-04-28]
+
 ### Changed
 
 - Threshold used for object detection (detect, test_model).
